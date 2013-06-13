@@ -81,12 +81,12 @@ class PocketKnife_FileSystem
 
   function getContentDir()
   {
-    return realpath( $_SERVER['DOCUMENT_ROOT'] . '\content' );
+    return realpath( $_SERVER['DOCUMENT_ROOT'] . '/content' );
   }
 
   function getTemplateDir()
   {
-    return realpath( $_SERVER['DOCUMENT_ROOT'] . '\templates' );
+    return realpath( $_SERVER['DOCUMENT_ROOT'] . '/templates' );
   }
 
   function findTemplateFile($fileName)
@@ -94,7 +94,7 @@ class PocketKnife_FileSystem
     PocketKnife::get('logger')->debug(__METHOD__, "Trying to find file: {$fileName}");
 
     $templateDir = $this->getTemplateDir();
-    $filePath   = realpath($templateDir . '\\' . $fileName);
+    $filePath   = realpath($templateDir . '/' . $fileName);
 
     return ($filePath) ? $filePath : false;
   }
@@ -107,11 +107,11 @@ class PocketKnife_FileSystem
     PocketKnife::get('logger')->debug(__METHOD__, "Trying to find file: {$fileName}");
 
     $contentDir = $this->getContentDir();
-    $filePath   = realpath($contentDir . '\\' . $fileName);
+    $filePath   = realpath($contentDir . '/' . $fileName);
 
     //Try out if the file exists with a .html extension
     if(!$filePath)
-      $filePath   = realpath($contentDir . '\\' . $fileName . '.html');
+      $filePath   = realpath($contentDir . '/' . $fileName . '.html');
 
     return ($filePath) ? $filePath : false;
   }
